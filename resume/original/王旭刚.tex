@@ -1,0 +1,120 @@
+\documentclass[10pt,A4]{article}	
+
+% 中文
+\usepackage{ctex}
+
+% 缩小页边距
+\usepackage[a4paper]{geometry}
+\geometry{top=1cm, bottom=1cm, left=1cm, right=1cm}
+
+% 分栏
+\usepackage{paracol}
+
+% 插入图片 (\includegraphics)
+\usepackage{graphicx}
+
+% 定义颜色宏
+\usepackage{color}
+\definecolor{lightcol}{RGB}{245,245,245}
+\definecolor{maincol}{RGB}{ 225, 0, 0 }
+\definecolor{darkcol}{RGB}{ 70, 70, 70 }
+
+% 首行缩进
+\setlength{\parindent}{0mm}
+
+% 图标库
+\usepackage{fontawesome}
+
+% 超链接
+\usepackage[hidelinks]{hyperref}
+% use to vertically center content
+% credits to: http://tex.stackexchange.com/questions/7219/how-to-vertically-center-two-images-next-to-each-other
+\newcommand{\vcenteredinclude}[1]{\begingroup
+\setbox0=\hbox{\includegraphics{#1}}%
+\parbox{\wd0}{\box0}\endgroup}
+
+% use to vertically center content
+% credits to: http://tex.stackexchange.com/questions/7219/how-to-vertically-center-two-images-next-to-each-other
+\newcommand*{\vcenteredhbox}[1]{\begingroup
+\setbox0=\hbox{#1}\parbox{\wd0}{\box0}\endgroup}
+
+% icon shortcut
+\newcommand{\icon}[2] { 							
+	\makebox(#2, #2){\textcolor{maincol}{\csname fa#1\endcsname}}
+}	
+
+% icon with text shortcut
+\newcommand{\icontext}[4]{ 						
+	\vcenteredhbox{\icon{#1}{#2}}  \hspace{2pt}  \textcolor{#4}{#3}
+}
+
+% icon with website url
+\newcommand{\iconhref}[5]{ 						
+    \vcenteredhbox{\icon{#1}{#2}}  \hspace{2pt} \href{#4}{\textcolor{#5}{#3}}
+}
+
+% icon with email link
+\newcommand{\iconemail}[5]{ 						
+    \vcenteredhbox{\icon{#1}{#2}}  \hspace{2pt} \href{mailto:#4}{\textcolor{#5}{#3}}
+}
+
+%----------------------------------------------------------------------------------------
+%   自定义命令
+%----------------------------------------------------------------------------------------
+
+\newcommand{\mpwidth}{\linewidth-\fboxsep-\fboxsep} % 页宽
+
+\newcommand{\cvtext}[1] {
+	\begin{tabular*}{1\mpwidth}{p{0.98\mpwidth}}
+		\parbox{1\mpwidth}{#1}
+	\end{tabular*}
+}
+
+\newcommand{\cvsection}[1] {
+	\vspace{14pt}
+    \textbf{\LARGE{#1}}\\[-4pt]
+    \textcolor{maincol}{ \rule{0.1\textwidth}{2pt} } 
+}
+
+%----------------------------------------------------------------------------------------
+%	main
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+\columnratio{0.7} % 左栏占比70%
+\setlength{\columnsep}{2.2em} % 左右栏间距
+\setlength{\columnseprule}{4pt} % 左右栏间距宽度
+\colseprulecolor{lightcol} % 左右栏间距颜色
+
+% 分栏
+\begin{paracol}{2}
+
+% 左栏
+\begin{leftcolumn}
+
+\begin{center}
+    \Large\textbf{课题执行(文档修订)记录表}
+\end{center}
+
+\end{leftcolumn}
+
+% 右栏
+\begin{rightcolumn}
+
+\includegraphics[width=\linewidth]{蓝底渐变.png}
+
+\cvsection{王旭刚}
+
+\icontext{MobilePhone}{12}{138\,-\,3423\,-\,0484}{black}\\[2pt]
+\icontext{Qq}{12}{2287245796}{black}\\[2pt]
+\iconemail{Envelope}{12}{castamerego@gmail.com}{castamerego@gmail.com}{black}\\[2pt]
+\iconhref{Github}{12}{github.com/Casta-mere}{https://github.com/Casta-mere}{black}\\[2pt]
+\icontext{MapMarker}{12}{浙江 \enspace 杭州}{black}\\[2pt]
+% \iconhref{Globe}{12}{castamerego.com}{http://castamerego.com/}{black}\\[2pt]
+
+A large IAM project required an intuitive interfa rights management. At the same time, new wor life time and monitoring had to be established
+
+\end{rightcolumn}
+
+\end{paracol}
+\end{document}
