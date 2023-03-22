@@ -1,0 +1,316 @@
+\documentclass[10pt,A4]{article}	
+
+\usepackage[utf8]{inputenc}		
+\usepackage{xstring, xifthen} %去掉了-
+\renewcommand*\familydefault{\sfdefault} 
+\usepackage[T1]{fontenc}
+\usepackage{moresize}
+
+
+% 图标库
+\usepackage{fontawesome}
+% use to vertically center content
+% credits to: http://tex.stackexchange.com/questions/7219/how-to-vertically-center-two-images-next-to-each-other
+\newcommand{\vcenteredinclude}[1]{\begingroup
+\setbox0=\hbox{\includegraphics{#1}}%
+\parbox{\wd0}{\box0}\endgroup}
+
+% use to vertically center content
+% credits to: http://tex.stackexchange.com/questions/7219/how-to-vertically-center-two-images-next-to-each-other
+\newcommand*{\vcenteredhbox}[1]{\begingroup
+\setbox0=\hbox{#1}\parbox{\wd0}{\box0}\endgroup}
+
+% icon shortcut
+\newcommand{\icon}[3] { 							
+	\makebox(#2, #2){\textcolor{maincol}{\csname fa#1\endcsname}}
+}	
+
+% icon with text shortcut
+\newcommand{\icontext}[4]{ 						
+	\vcenteredhbox{\icon{#1}{#2}{#3}}  \hspace{2pt}  \parbox{0.7\mpwidth}{\textcolor{#4}{#3}}
+}
+
+% icon with website url
+\newcommand{\iconhref}[5]{ 						
+    \vcenteredhbox{\icon{#1}{#2}{#5}}  \hspace{2pt} \href{#4}{\textcolor{#5}{#3}}
+}
+
+% icon with email link
+\newcommand{\iconemail}[5]{ 						
+    \vcenteredhbox{\icon{#1}{#2}{#5}}  \hspace{2pt} \href{mailto:#4}{\textcolor{#5}{#3}}
+}
+
+
+% 分栏
+\usepackage{paracol}
+
+% 缩小页边距
+\usepackage[a4paper]{geometry}
+\geometry{top=1cm, bottom=1cm, left=1cm, right=1cm}
+
+% 页眉页脚
+\usepackage{fancyhdr}
+\pagestyle{empty}
+
+% 首行缩进
+\setlength{\parindent}{0mm}
+
+% 表格
+\usepackage{array}
+\newcolumntype{x}[1]{%
+>{\raggedleft\hspace{0pt}}p{#1}}%
+
+% 插入图片 (\includegraphics)
+\usepackage{graphicx}
+
+% 画图
+\usepackage{tikz}				
+\usetikzlibrary{shapes, backgrounds,mindmap, trees}
+
+% 定义颜色宏
+\usepackage{transparent}
+\usepackage{color}
+\definecolor{maincol}{RGB}{ 225, 0, 0 }
+\definecolor{darkcol}{RGB}{ 70, 70, 70 }
+\definecolor{lightcol}{RGB}{245,245,245}
+
+
+% 超链接
+\usepackage[hidelinks]{hyperref}
+
+% 中文
+\usepackage{xeCJK}
+
+\usepackage{fontspec}
+
+\usepackage[default]{raleway}
+\setCJKmainfont{Microsoft YaHei}
+\setmainfont{Raleway}
+\renewcommand{\CJKglue}{\hskip 1pt}
+
+%----------------------------------------------------------------------------------------
+%   自定义命令
+%----------------------------------------------------------------------------------------
+
+\newcommand{\mpwidth}{\linewidth-\fboxsep-\fboxsep} % 页宽
+
+\newcommand{\cvtext}[1] {
+	\begin{tabular*}{1\mpwidth}{p{0.98\mpwidth}}
+		\parbox{1\mpwidth}{#1}
+	\end{tabular*}
+}
+
+\newcommand{\cvsection}[1] {
+	
+    \vspace{4pt}
+
+	\cvtext{
+        % 使用 group 在内部修改间距等
+        \begingroup
+        \renewcommand{\CJKglue}{\hskip 2.5pt}
+		\textbf{\LARGE{\textcolor{darkcol}{\uppercase{#1}}}}\\[-4pt]
+		\textcolor{maincol}{ \rule{0.1\textwidth}{2pt} } \\[-2pt]
+        \endgroup
+        }
+}
+
+\newcommand{\cvskill}[3] {
+	\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
+ 		\textcolor{black}{\textbf{#1}} & \textcolor{maincol}{#2}\\
+	\end{tabular*}%
+	
+	\hspace{4pt}
+	\begin{tikzpicture}[scale=1,rounded corners=2pt,very thin]
+		\fill [lightcol] (0,0) rectangle (1\mpwidth, 0.15);
+		\fill [maincol] (0,0) rectangle (#3\mpwidth, 0.15);
+  	\end{tikzpicture}%
+}
+
+\newcommand{\cvcertificate}[2] {
+	\begin{tabular*}{1\mpwidth}{p{0.8\mpwidth}    r}
+ 		\textcolor{black}{\textbf{#1}} & \textcolor{black}{\textbf{#2}}\\
+	\end{tabular*}%
+	
+}
+
+\newcommand{\cvlist}[1] {
+
+    \vspace{-6pt}
+
+	\begin{itemize}{#1}\end{itemize}
+
+    \vspace{6pt}
+
+    }
+
+\newcommand{\eduevent}[6] {
+	
+	\parbox{\mpwidth}{
+		\begin{tabular*}{1\mpwidth}{p{0.69\mpwidth}  r}
+	 		{\large \textcolor{black}{\textbf{#2}}}& \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\[7pt]
+			\textcolor{darkcol}{\textbf{#3}} & \\[7pt]
+            \textcolor{darkcol}{\textbf{#4}} & \\[7pt]
+            #5 & \\
+		\end{tabular*}\\
+	}
+    {#6}
+}
+
+\newcommand{\cvproject}[3] {
+
+	\parbox{\mpwidth}{
+		\begin{tabular*}{1\mpwidth}{p{0.65\mpwidth}  r}
+            {\large \textcolor{black}{\textbf{#2}}} & \colorbox{maincol}{\makebox[0.33\mpwidth]{\textcolor{white}{#1}}} \\
+		\end{tabular*}\\
+	}
+    \begingroup
+        \renewcommand{\CJKglue}{\hskip 1.5pt}
+        #3
+    \endgroup
+}
+
+%----------------------------------------------------------------------------------------
+%	main
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+\columnratio{0.7} % 左栏占比70%
+\setlength{\columnsep}{2.2em} % 左右栏间距
+\setlength{\columnseprule}{4pt} % 左右栏间距宽度
+\colseprulecolor{lightcol} % 左右栏间距颜色
+
+% 分栏
+\begin{paracol}{2}
+
+% 左栏
+\begin{leftcolumn}
+
+\cvsection{教育经历}
+\eduevent
+	{2020-09\quad 至今}
+	{浙江理工大学}
+	{计算机科学与技术\enspace (全英文)\enspace |\enspace 本科}
+	{GPA\enspace 3.76/5.00\enspace (前15$\%$)}
+    {相关课程}
+    {   
+
+        \cvlist{
+            \item C程序设计 {\hfill (96) \qquad \qquad \enspace \enspace }
+            \item 面向对象程序设计 {\hfill (93) \qquad \qquad \enspace \enspace }
+            \item 数据结构与算法 {\hfill (96) \qquad \qquad \enspace \enspace }
+            \item 计算机网络 {\hfill (95) \qquad \qquad \enspace \enspace }  
+        }
+    }
+
+\vspace{-20pt}
+
+\vfill\null
+
+\cvsection{项目经历}
+\cvproject
+    {2022-03\enspace 至\enspace 2022-08}
+    {基于深度学习的商品识别系统}
+    {\cvlist{
+            \item 针对在无人货架中的应用，对常见的20余种商品，拍摄了共5422张不同角度，不同组合的图片，以及对应的标注文件作为数据集
+            \item 使用Python语言，\textbf{PyTorch}框架，\textbf{YOLOv5}算法。训练过程中对训练数据集使用了Mosaic拼接、图片覆盖混入、随机翻转等数据增强方式。通过200轮的迭代，最终\textbf{mAP 0.5:0.95}达到\textbf{0.82}以上
+            \item 最终部署至RKNN边缘智能计算平台以及硬件设备中
+        }
+    }
+
+\cvproject
+    {2022-09\enspace 至\enspace 2022-12}
+    {智能知识侦察助手}
+    {\cvlist{
+            \item 爬取豆瓣图书Top200的书籍，编写对图书信息侦查的问卷生成程序，并且以网页形式呈现出来，实现问卷填写，数据分析，可视化展示等
+            \item 本人主要负责\textbf{后端开发}与\textbf{服务器部署}。后端使用Python语言，应用面向对象程序设计的思想抽象出书籍、问题、数据库连接、控制等多个类进行操作。最终部署至Linux服务器。网页链接：\href{http://castamerego.com/}{\textbf{\emph{castamerego.com}}}
+            \item 三人小组使用Github，拥有\textbf{超过100条}commit记录，并有完整的过程记录，具体内容可访问\href{https://github.com/Castamere/Read-Book}{\textbf{\emph{github.com/Castamere/Read-Book}}}查看
+        }
+    }
+
+\vspace{-20pt}
+
+\vfill\null
+
+\cvsection{获奖经历}
+
+\cvlist{
+		\item 中国大学生计算机设计大赛\quad \textbf{国家级三等奖}
+        \item 中国大学生英语阅读大赛\quad \textbf{校级特等奖}
+        \item 浙江省\quad \textbf{省政府奖学金} 
+        \item 校二等、三等奖学金、优秀学生干部、社会工作奖学金
+        
+}
+\vspace{-20pt}
+
+\vfill\null
+
+\cvsection{自我评价}
+
+\cvlist{
+    \item 担任全英文班班长，经常帮助留学生处理问题，有较好的英文日常对话能力，做事认真负责
+    \item 课本均为黑皮书系列英文原著，有较好的英文文献阅读能力
+    \item 有良好的coding风格与规范，有良好的面向对象程序设计思想
+    \item 有丰富的Python开发经验，Python爬虫经验，熟悉常用库如Pymysql，selenium，requests，BeautifulSoup4，Pandas等
+    \item 有丰富的社区代码提交经验，在Github上有130+次contribution
+    \item 熟练掌握Linux常用命令，Git工具，有Linux服务器部署经验
+}
+
+\vfill\null
+
+% \cvsection{自我评价}
+
+% \vfill\null
+
+
+\end{leftcolumn}
+
+% 右栏
+\begin{rightcolumn}
+
+\includegraphics[width=\linewidth]{蓝底渐变.png}
+
+\vfill\null
+
+\cvsection{王旭刚}
+
+\icontext{MobilePhone}{12}{138\,-\,3423\,-\,0484}{black}\\[6pt]
+\icontext{Qq}{12}{2287245796}{black}\\[6pt]
+\iconemail{Envelope}{12}{castamerego@gmail.com}{castamerego@gmail.com}{black}\\[6pt]
+\iconhref{Github}{12}{github.com/Casta-mere}{https://github.com/Casta-mere}{black}\\[6pt]
+\icontext{MapMarker}{12}{浙江 \enspace 杭州}{black}
+% \iconhref{Globe}{12}{castamerego.com}{http://castamerego.com/}{black}\\[6pt]
+
+\vfill\null
+
+\cvsection{专业技能}
+
+\cvskill{Python} {3+ yrs} {1} \\[-2pt]
+
+\cvskill{C++} {3+ yrs} {0.92} \\[-2pt]
+
+\cvskill{Linux} {2+ yrs} {0.59} \\[-2pt]
+
+\cvskill{GIT} {3+ yrs} {0.68} \\[-2pt]
+
+\cvskill{Mysql} {2+ yrs} {0.68} \\[-2pt]
+
+\cvskill{\LaTeX } {2+ yrs} {0.82} \\[-2pt]
+
+\cvskill{HTML/CSS/Javascript} {掌握} {0.46} \\[-2pt]
+
+\cvskill{Ms Of\mbox{}f\mbox{}ice} {精通} {1} \\[-2pt]
+
+\vfill\null
+
+\cvsection{资格证书}
+
+\cvcertificate{CET-4}{\texttt{571}}
+
+\cvcertificate{CET-6}{\texttt{508}}
+
+\vfill\null
+
+\end{rightcolumn}
+\end{paracol}
+
+\end{document}
