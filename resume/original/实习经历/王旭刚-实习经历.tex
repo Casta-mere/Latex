@@ -174,33 +174,35 @@
     \endgroup
 }
 
-\newcommand{\intership}[3] {
+\newcommand{\intership}[4] {
     \vspace{2pt}
 
 	\parbox{\mpwidth}{
 		\begin{tabular*}{1\mpwidth}{p{0.65\mpwidth}  r}
-            {\Large \textcolor{black}{\textbf{#2}}} & \colorbox{maincol}{\makebox[0.33\mpwidth]{\textcolor{white}{\textbf{#1}}}} \\
+            {\Large \textcolor{black}{\textbf{#2}}} & \colorbox{maincol}{\makebox[0.33\mpwidth]{\textcolor{white}{\textbf{#1}}}} \\[3pt]
+            {\large \textcolor{darkcol}{\textbf{#3}}} & \\[3pt]
 		\end{tabular*}\\
 	}
     \begingroup
         \setlength{\baselineskip}{15pt}
         \renewcommand{\CJKglue}{\hskip 1.5pt}
-        #3
+        #4
     \endgroup
 }
 
-\newcommand{\intershipUptoday}[3] {
+\newcommand{\intershipUptoday}[4] {
     \vspace{2pt}
 
 	\parbox{\mpwidth}{
 		\begin{tabular*}{1\mpwidth}{p{0.69\mpwidth}  r}
-            {\Large \textcolor{black}{\textbf{#2}}} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{white}{\textbf{#1}}}} \\
+            {\Large \textcolor{black}{\textbf{#2}}} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{white}{\textbf{#1}}}} \\[3pt]
+            {\large \textcolor{darkcol}{\textbf{#3}}} & \\[3pt]
 		\end{tabular*}\\
 	}
     \begingroup
         \setlength{\baselineskip}{15pt}
         \renewcommand{\CJKglue}{\hskip 1.5pt}
-        #3
+        #4
     \endgroup
 }
 
@@ -260,6 +262,7 @@
                 \item \textbf{项目收获：}项目最终部署至RKNN边缘智能计算平台以及硬件设备中。项目获得中国大学生计算机设计大赛\textbf{国家级三等奖}
             }
         }
+        \vspace{5pt}
 
         \project
         {2022-09\enspace 至\enspace 2022-12}
@@ -277,10 +280,11 @@
 
         \mysection{实习经历}
         \intership
-        {2023-04\enspace 至\enspace 2023-07}
+        {2023-04\enspace 至\enspace 2023-06}
         {杭州深软科技有限公司}
+        {Python后端开发}
         {\cvlist{
-                \item \textbf{主要职责：}1234567890
+                \item 领导三人小组，在三个月内完成了\textbf{人脸识别系统}的设计，开发，测试，部署等工作，最终识别延迟在1s以内，识别准确率在95\%以上，最终应用至浙江理工大学计算机学院各实验室
                 \item \textbf{主要职责：}1234567890
                 \item \textbf{主要职责：}1234567890
             }
@@ -289,6 +293,7 @@
         \intershipUptoday
         {2023-04\enspace 至今}
         {杭州登虹科技有限公司}
+        {测试开发}
         {\cvlist{
                 \item \textbf{主要职责：}1234567890
                 \item \textbf{主要职责：}1234567890
@@ -362,11 +367,15 @@
 
         \skill{C++} {3+ yrs} {0.92} \\[-2pt]
 
+        \skill{Android(Java)} {1+ yr} {0.86} \\[-2pt]
+
         \skill{Linux} {2+ yrs} {0.59} \\[-2pt]
 
         \skill{GIT} {3+ yrs} {0.68} \\[-2pt]
 
-        \skill{Mysql} {2+ yrs} {0.68} \\[-2pt]
+        \skill{Docker} {1+ yr} {0.5} \\[-2pt]
+
+        \skill{MySQL} {2+ yrs} {0.68} \\[-2pt]
 
         \skill{\LaTeX } {2+ yrs} {0.82} \\[-2pt]
 
