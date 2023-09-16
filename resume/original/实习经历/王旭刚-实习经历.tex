@@ -25,17 +25,17 @@
 
 % icon with text shortcut
 \newcommand{\icontext}[4]{ 						
-	\vcenteredhbox{\icon{#1}{#2}{#3}}  \hspace{2pt}  \parbox{0.7\mpwidth}{\textcolor{#4}{#3}}
+	\vcenteredhbox{\hspace{1pt} \icon{#1}{#2}{#3}}  \hspace{1pt}  \parbox{0.7\mpwidth}{\textcolor{#4}{#3}}
 }
 
 % icon with website url
 \newcommand{\iconhref}[5]{ 						
-    \vcenteredhbox{\icon{#1}{#2}{#5}}  \hspace{2pt} \href{#4}{\textcolor{#5}{#3}}
+    \vcenteredhbox{\hspace{1pt} \icon{#1}{#2}{#5}}  \hspace{1pt} \href{#4}{\textcolor{#5}{#3}}
 }
 
 % icon with email link
 \newcommand{\iconemail}[5]{ 						
-    \vcenteredhbox{\icon{#1}{#2}{#5}}  \hspace{2pt} \href{mailto:#4}{\textcolor{#5}{#3}}
+    \vcenteredhbox{\hspace{1pt} \icon{#1}{#2}{#5}}  \hspace{1pt} \href{mailto:#4}{\textcolor{#5}{#3}}
 }
 
 
@@ -80,6 +80,7 @@
 \usepackage{xeCJK}
 
 \usepackage{fontspec}
+\usepackage{sourcecodepro}
 
 \usepackage[default]{raleway}
 \setCJKmainfont{Microsoft YaHei}
@@ -117,8 +118,8 @@
 }
 
 \newcommand{\skill}[3] {
-	\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
- 		\textcolor{black}{\textbf{#1}} & \textcolor{maincol}{#2}\\
+	\begin{tabular*}{1\mpwidth}{p{0.62\mpwidth}  r}
+ 		\textcolor{black}{\textbf{#1}} & \textcolor{maincol}{\texttt{\textbf{#2}}}\\
 	\end{tabular*}%
 	
 	\hspace{4pt}
@@ -273,6 +274,50 @@
                 \item \textbf{项目收获：}三人小组使用Github，拥有\textbf{超过100条}commit记录，并有完整的过程记录。具体内容可访问\enspace \href{https://github.com/Castamere/Read-Book}{\textbf{\emph{github.com/Castamere/Read-Book}}}\enspace 查看，过程中培养了良好的多人协作coding能力。
             }
         }
+        % \vspace{5pt}
+
+        % \project
+        % {2022-09\enspace 至\enspace 2022-12}
+        % {}
+        % {\cvlist{
+        %         \item \textbf{项目介绍：}
+        %         \item \textbf{主要职责：}
+        %         \item \textbf{项目收获：}
+        %     }
+        % }
+        \vspace{5pt}
+
+        \project
+        {2021-09\enspace 至\enspace 2021-10}
+        {大众点评爬虫}
+        {\cvlist{
+                \item \textbf{数据爬取：}掌握Html/CSS/Javascript，爬取数据使用Selenium， Requests库。针对大众点评的css-svg映射反爬取进行逆向、使用代理ip防止被封
+                \item \textbf{数据清洗：}使用BeautifulSoup4，re库。使用id，class，xpath等多种方式对元素定位
+                \item \textbf{数据储存：}使用Pandas库储存至Excel表格，使用PyMySQL库储存至数据库
+            }
+        }
+        \vspace{5pt}
+
+        \project
+        {2023-05\enspace 至\enspace 2023-06}
+        {QBomb}
+        {\cvlist{
+                \item \textbf{项目介绍：}本项目是一款炸弹人风格的Android游戏，玩家可以放置炸弹来摧毁障碍物并杀死AI敌人，地图中还有各种道具来增强各种属性。 将吃豆人与泡泡堂两款经典游戏的亮点结合，有较高的可玩性
+                \item \textbf{主要职责：}使用Android Studio，Java语言进行编程。主要负责编写游戏内玩家、道具、AI机器人、游戏判定等逻辑，以及游戏界面的设计
+                \item \textbf{项目收获：}参与项目的前期整体设计与资源搜集，中期逻辑设计与编程实现，后期整体测试与文档撰写。各个流程都有一定的收获，可在\href{https://github.com/Casta-mere/QBomb}{\textbf{\emph{github.com/Casta-mere/QBomb}}}查看并下载APK体验
+            }
+        }
+        \vspace{5pt}
+
+        \project
+        {2023-04\enspace 至\enspace 2023-06}
+        {在线人脸识别系统}
+        {\cvlist{
+                \item \textbf{项目介绍：}本项目为一款实验室人脸识别考勤系统，前端为Web端，后端则基于flask开发框架，使用dlib的人脸识别框架
+                \item \textbf{主要职责：}本人主要负责整体项目功能与结构设计，后端开发与服务器部署。设计并实现了\textbf{单服务器多客户端}的服务结构，通过多线程确保不会出现某个客户端意外离线导致服务器端出现堵塞，以及通过设置定时器防止僵尸进程等
+                \item \textbf{项目收获：}领导三人小组，在三个月内完成了人脸识别系统的设计，开发，测试，部署等工作，最终识别延迟在\textbf{1s以内}，识别准确率在\textbf{95\%以上}，最终应用至\textbf{浙江理工大学计算机学院各实验室}
+            }
+        }
 
         \vspace{-20pt}
 
@@ -283,15 +328,17 @@
         {2023-04\enspace 至\enspace 2023-06}
         {杭州深软科技有限公司}
         {Python后端开发}
-        {\cvlist{
-                \item 领导三人小组，在三个月内完成了\textbf{人脸识别系统}的设计，开发，测试，部署等工作，最终识别延迟在1s以内，识别准确率在95\%以上，最终应用至浙江理工大学计算机学院各实验室
-                \item \textbf{主要职责：}1234567890
-                \item \textbf{主要职责：}1234567890
+        {
+            
+            \cvtext{主要工作：}
+            \cvlist{
+                \item 领导三人小组，在三个月内完成了\textbf{人脸识别系统}的设计，开发，测试，部署等工作，最终识别延迟在\textbf{1s以内}，识别准确率在\textbf{95\%以上}，最终应用至\textbf{浙江理工大学计算机学院各实验室}
             }
         }
+        \vspace{5pt}
 
-        \intershipUptoday
-        {2023-04\enspace 至今}
+        \intership
+        {2023-04\enspace 至\enspace  2023-07}
         {杭州登虹科技有限公司}
         {测试开发}
         {\cvlist{
@@ -389,7 +436,35 @@
 
         \certification{CET-4}{\texttt{571}}
 
-        \certification{CET-6}{\texttt{508}}
+        \certification{CET-6}{\texttt{598}}
+
+        \vfill\null
+
+        \mysection{最近阅读}
+
+        \cvtext{Python-cookbook}
+
+        \cvtext{《动手学深度学习》 李沐}
+
+        \vfill\null
+
+        \mysection{工具}
+
+        \cvtext{SSH}
+
+        \cvtext{SecureCRT}
+
+        \cvtext{MobaXterm}
+
+        \cvtext{Xmind}
+        
+        \cvtext{Notion}
+        
+        \cvtext{WireShark}
+        
+        \cvtext{Visio}
+        
+        \cvtext{GitKarken}
 
         \vfill\null
 
