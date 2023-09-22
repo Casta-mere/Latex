@@ -112,7 +112,21 @@
         \begingroup
         \renewcommand{\CJKglue}{\hskip 2.5pt}
 		\textbf{\LARGE{\textcolor{darkcol}{\uppercase{#1}}}}\\[-4pt]
-		\textcolor{maincol}{ \rule{0.1\textwidth}{2pt} } \\[-6pt]
+		\textcolor{maincol}{ \rule{0.143\textwidth}{2pt} } \\[-6pt]
+        \endgroup
+        }
+}
+
+\newcommand{\name}[1] {
+	
+    \vspace{12pt}
+
+	\cvtext{
+        % 使用 group 在内部修改间距等
+        \begingroup
+        \renewcommand{\CJKglue}{\hskip 2.5pt}
+		\textbf{\LARGE{\textcolor{darkcol}{\uppercase{#1}}}}\\[-4pt]
+		\textcolor{maincol}{ \rule{0.105\textwidth}{2pt} } \\[-6pt]
         \endgroup
         }
 }
@@ -396,7 +410,7 @@
 
         \vfill\null
 
-        \mysection{王旭刚}
+        \name{王旭刚}
 
         \icontext{Calendar}{12}{2002-4 \enspace 2024届}{black}\\[6pt]
         \icontext{MobilePhone}{12}{138\,-\,3423\,-\,0484}{black}\\[6pt]
